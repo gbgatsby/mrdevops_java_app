@@ -4,7 +4,7 @@ pipeline{
 
     agent any
 
-    parameters{
+    parameters{ 
 
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
         string(name: 'ImageName', description: "name of the docker build", defaultValue: 'javapp')
@@ -18,8 +18,7 @@ pipeline{
                     when { expression {  params.action == 'create' } }
             steps{
             gitCheckout(
-                branch: "main",
-                url: "https://github.com/gbgatsby/mrdevops_java_app.git"
+                git branch: 'main', url: 'https://github.com/gbgatsby/mrdevops_java_app.git'
             )
             }
         }
